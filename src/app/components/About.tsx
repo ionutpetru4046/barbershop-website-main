@@ -26,8 +26,8 @@ export default function AboutUs() {
       <div className="w-full md:w-1/2 text-gray-900">
         <h2 className="text-4xl font-bold mb-6">Our Story</h2>
         <p className="mb-6 text-lg leading-relaxed">
-          At Josh's Turkish Barbers, we believe a haircut is more than just a service — it’s an experience. 
-          Founded in 2010 by master barber Alex Josh's, our shop has grown from a small Neighborhood 
+          At Josh&apos;s Turkish Barbers, we believe a haircut is more than just a service — it’s an experience. 
+          Founded in 2010 by master barber Alex Josh&apos;s, our shop has grown from a small Neighborhood 
           spot into a community favorite known for precision, style, and care.
         </p>
         <p className="mb-6 text-lg leading-relaxed">
