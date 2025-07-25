@@ -26,14 +26,16 @@ export default function AboutUs() {
       <div className="w-full md:w-1/2 text-gray-900">
         <h2 className="text-4xl font-bold mb-6">Our Story</h2>
         <p className="mb-6 text-lg leading-relaxed">
-          At Josh&apos;s Turkish Barbers, we believe a haircut is more than just a service — it’s an experience. 
-          Founded in 2010 by master barber Alex Josh&apos;s, our shop has grown from a small Neighborhood 
-          spot into a community favorite known for precision, style, and care.
+          At Josh&apos;s Turkish Barbers, we believe a haircut is more than just
+          a service — it’s an experience. Founded in 2010 by master barber Alex
+          Josh&apos;s, our shop has grown from a small Neighborhood spot into a
+          community favorite known for precision, style, and care.
         </p>
         <p className="mb-6 text-lg leading-relaxed">
-          Our team combines traditional barbering techniques with modern trends, ensuring every client 
-          leaves looking and feeling their best. Whether you want a classic cut, a bold skin fade, or a 
-          relaxing hot towel shave, we treat you like family.
+          Our team combines traditional barbering techniques with modern trends,
+          ensuring every client leaves looking and feeling their best. Whether
+          you want a classic cut, a bold skin fade, or a relaxing hot towel
+          shave, we treat you like family.
         </p>
 
         <Link href="/booking">
