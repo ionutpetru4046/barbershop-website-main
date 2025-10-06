@@ -60,7 +60,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <ul className="md:hidden absolute top-full left-0 w-full bg-gray-600 text-white flex flex-col space-y-4 px-6 py-4 z-10">
+        <ul className="md:hidden absolute top-full left-0 w-full backdrop-blur-lg bg-white/80 text-black flex flex-col space-y-4 px-6 py-4 z-10">
           <li>
             <a href="#" onClick={() => setIsOpen(false)}>
               Home
