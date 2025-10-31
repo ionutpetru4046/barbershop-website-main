@@ -25,7 +25,7 @@ export default function Footer() {
         </div>
 
         {/* Navigation */}
-        <nav className="flex flex-col space-y-3 justify-center">
+        <nav className="flex flex-col space-y-3">
           <h3 className="text-2xl font-bold mb-2">Quick Links</h3>
           <a
             href="#"
