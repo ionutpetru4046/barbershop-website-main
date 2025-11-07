@@ -31,7 +31,7 @@ export default function AboutUs() {
           spot into a community favorite known for precision, style, and care.
         </p>
         <p className="mb-6 text-lg leading-relaxed">
-          Our team combines traditional barbering techniques with modern trends, ensuring every client 
+          Our Team combines traditional barbering techniques with modern trends, ensuring every client 
           leaves looking and feeling their best. Whether you want a classic cut, a bold skin fade, or a 
           relaxing hot towel shave, we treat you like family.
         </p>
