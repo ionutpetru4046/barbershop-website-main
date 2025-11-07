@@ -42,7 +42,7 @@ export default function BookingForm() {
             placeholder="Full Name *"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition"
+            className="p-3 rounded-lg text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition"
             required
           />
 
@@ -51,7 +51,7 @@ export default function BookingForm() {
             placeholder="Email *"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition"
+            className="p-3 rounded-lg border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition"
             required
           />
 
@@ -60,7 +60,7 @@ export default function BookingForm() {
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition flex-1"
+              className="p-3 rounded-lg text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition flex-1"
               required
             />
 
@@ -68,7 +68,7 @@ export default function BookingForm() {
               type="time"
               value={time}
               onChange={(e) => setTime(e.target.value)}
-              className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition flex-1"
+              className="p-3 rounded-lg text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition flex-1"
               required
             />
           </div>
@@ -77,13 +77,13 @@ export default function BookingForm() {
             placeholder="Additional Notes"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition"
+            className="p-3 text-black rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition"
             rows={4}
           />
 
           <button
             type="submit"
-            className="bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
+            className="bg-black text-white cursor-pointer py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
           >
             Book Now
           </button>
@@ -92,7 +92,7 @@ export default function BookingForm() {
         <div className="mt-6 text-center">
           <button
             onClick={() => router.push("/")}
-            className="text-gray-600 underline hover:text-gray-800 transition"
+            className="text-gray-600 underline hover:text-gray-800 transition cursor-pointer"
           >
             ← Go to Home Page
           </button>
