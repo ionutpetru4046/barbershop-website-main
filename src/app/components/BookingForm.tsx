@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation"; // ✅ Import router
+import { useRouter } from "next/navigation";
 
 export default function BookingForm() {
-  const router = useRouter(); // ✅ Initialize router
+  const router = useRouter();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -30,70 +30,73 @@ export default function BookingForm() {
   };
 
   return (
-    <section id="booking" className="py-16 px-6 bg-gray-100 max-w-lg mx-auto">
-      <h2 className="text-3xl font-semibold mb-8 text-center">
-        Book Your Appointment
-      </h2>
+    <section className="py-16 px-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen flex items-center justify-center">
+      <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
+          Book Your Appointment
+        </h2>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="text"
-          placeholder="Full Name *"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black"
-          required
-        />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            type="text"
+            placeholder="Full Name *"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition"
+            required
+          />
 
-        <input
-          type="email"
-          placeholder="Email *"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black"
-          required
-        />
+          <input
+            type="email"
+            placeholder="Email *"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition"
+            required
+          />
 
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          className="p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black"
-          required
-        />
+          <div className="flex gap-4">
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition flex-1"
+              required
+            />
 
-        <input
-          type="time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-          className="p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black"
-          required
-        />
+            <input
+              type="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+              className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition flex-1"
+              required
+            />
+          </div>
 
-        <textarea
-          placeholder="Additional Notes"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black"
-          rows={4}
-        />
+          <textarea
+            placeholder="Additional Notes"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition"
+            rows={4}
+          />
 
-        <button
-          type="submit"
-          className="bg-black text-white cursor-pointer py-3 rounded hover:bg-gray-800 transition"
-        >
-          Book Now
-        </button>
-      </form>
+          <button
+            type="submit"
+            className="bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
+          >
+            Book Now
+          </button>
+        </form>
 
-      {/* ✅ Go Back Button */}
-      <div className="mt-6 text-center">
-        <button
-          onClick={() => router.push("/")}
-          className="text-black underline hover:text-gray-700 cursor-pointer transition"
-        >
-          ← Go to Home Page
-        </button>
+        <div className="mt-6 text-center">
+          <button
+            onClick={() => router.push("/")}
+            className="text-gray-600 underline hover:text-gray-800 transition"
+          >
+            ← Go to Home Page
+          </button>
+        </div>
       </div>
     </section>
   );

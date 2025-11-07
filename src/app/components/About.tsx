@@ -37,7 +37,7 @@ export default function AboutUs() {
         </p>
 
         <Link href="/booking">
-          <button className="bg-black text-white cursor-pointer px-6 py-3 rounded-lg hover:bg-gray-800 transition">
+          <button className=" text-white cursor-pointer px-6 py-3 rounded-lg hover:bg-gray-800 transition">
             Book an Appointment
           </button>
         </Link>
