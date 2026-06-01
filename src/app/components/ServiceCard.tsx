@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type ServiceCardProps = {
   title: string;
   description: string;
@@ -21,27 +23,35 @@ export default function ServiceCard({
   serviceType,
 }: ServiceCardProps) {
   return (
-    <div
-      className="text-white rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:scale-105 bg-cover bg-center bg-no-repeat relative overflow-hidden"
+    <article
+      className="group relative min-h-[280px] rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
       style={{
         backgroundImage: `url(${backgroundImages[serviceType]})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
-      {/* Overlay for readability */}
-      <div className="absolute inset-0 bg-black/60 rounded-xl z-0" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)] via-[var(--ink)]/70 to-[var(--ink)]/30 transition-opacity duration-300 group-hover:via-[var(--ink)]/80" />
 
-      {/* Content */}
-      <div className="relative z-10">
-        <h3 className="text-2xl font-bold mb-3 border-b border-white/20 pb-2">
+      <div className="relative z-10 h-full flex flex-col justify-end p-6">
+        <h3 className="font-display text-2xl font-semibold text-white mb-2">
           {title}
         </h3>
-        <p className="text-white/80 mb-6 leading-relaxed">{description}</p>
-        <div className="text-right">
-          <span className="bg-white text-black px-4 py-2 rounded-full font-semibold text-sm shadow hover:bg-gray-400 transition">
+        <p className="text-white/75 text-sm leading-relaxed mb-4 line-clamp-2">
+          {description}
+        </p>
+        <div className="flex items-center justify-between gap-3">
+          <span className="text-[var(--gold)] font-semibold text-lg">
             {price}
           </span>
+          <Link
+            href="/booking"
+            className="text-xs font-semibold uppercase tracking-wider text-white/90 hover:text-[var(--gold)] transition opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 duration-300"
+          >
+            Book →
+          </Link>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

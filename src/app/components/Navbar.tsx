@@ -1,88 +1,115 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
+
+const navLinks = [
+  { label: "Home", href: "#" },
+  { label: "Services", href: "#services" },
+  { label: "Booking", href: "#booking" },
+  { label: "Gallery", href: "#gallery" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   return (
-    <nav className="backdrop-blur-lg bg-white/10 text-white fixed w-full top-0 z-50 shadow-lg border-b border-white/20 px-6 py-4 flex items-center justify-between h-40 md:h-32">
-      {/* Logo */}
-      <Link href="/" className="flex items-center z-20">
-        <Image
-          src="/logo.jpeg"
-          alt="SharpEdge Logo"
-          width={120}
-          height={120}
-          className="rounded-full"
-          priority
-        />
-      </Link>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[var(--ink)]/95 backdrop-blur-md shadow-lg py-3"
+          : "bg-transparent py-5"
+      }`}
+    >
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
+        <Link href="/" className="flex items-center gap-3 shrink-0 z-20">
+          <Image
+            src="/logo.jpeg"
+            alt="Josh's Turkish Barbers"
+            width={48}
+            height={48}
+            className="rounded-full ring-2 ring-[var(--gold)]/50 object-cover"
+            priority
+          />
+          <span className="hidden sm:block font-display text-lg font-semibold text-white tracking-wide">
+            Josh&apos;s Turkish Barbers
+          </span>
+        </Link>
 
-      {/* Desktop Menu */}
-      <ul className="hidden md:flex space-x-4 z-20">
-        {["Home", "Services", "Booking", "Gallery", "Contact"].map((item) => (
-          <li key={item}>
-            <a
-              href={`#${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
-              className="px-4 py-2 rounded-md bg-gray-600 hover:bg-gray-900 transition-colors duration-300 text-white font-medium shadow-sm whitespace-nowrap"
-            >
-              {item}
-            </a>
-          </li>
-        ))}
-      </ul>
-
-      {/* Mobile Menu Button */}
-      <button
-        className="md:hidden z-20"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle menu"
-      >
-        <svg className="w-6 h-6" viewBox="0 0 24 24">
-          {isOpen ? (
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M18.3 5.71L12 12l6.3 6.29-1.42 1.42L12 14.83l-6.29 6.3-1.42-1.42L9.17 12 2.88 5.71l1.42-1.42L12 9.17l6.29-6.3 1.42 1.42z"
-            />
-          ) : (
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z"
-            />
-          )}
-        </svg>
-      </button>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <ul className="md:hidden absolute top-full left-0 w-full backdrop-blur-lg bg-white/80 text-black flex flex-col space-y-4 px-6 py-4 z-10">
-          <li>
-            <a href="#" onClick={() => setIsOpen(false)}>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#services" onClick={() => setIsOpen(false)}>
-              Services
-            </a>
-          </li>
-          <li>
-            <a href="#gallery" onClick={() => setIsOpen(false)}>
-              Gallery
-            </a>
-          </li>
-          <li>
-            <a href="#contact" onClick={() => setIsOpen(false)}>
-              Contact
-            </a>
+        <ul className="hidden lg:flex items-center gap-1">
+          {navLinks.map((item) => (
+            <li key={item.label}>
+              <a
+                href={item.href}
+                className="px-4 py-2 text-sm font-medium text-white/80 hover:text-[var(--gold)] transition-colors rounded-lg"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+          <li className="ml-2">
+            <Link href="/booking" className="btn-primary text-sm !py-2.5 !px-5">
+              Book now
+            </Link>
           </li>
         </ul>
+
+        <button
+          type="button"
+          className="lg:hidden z-20 p-2 text-white rounded-lg hover:bg-white/10 transition"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+        >
+          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </nav>
+
+      {isOpen && (
+        <div className="lg:hidden fixed inset-0 top-0 z-10 bg-[var(--ink)]/98 backdrop-blur-lg pt-24 px-6 pb-8">
+          <ul className="flex flex-col gap-1">
+            {navLinks.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block py-4 text-xl font-display text-white border-b border-white/10 hover:text-[var(--gold)] transition"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+            <li className="pt-6">
+              <Link
+                href="/booking"
+                onClick={() => setIsOpen(false)}
+                className="btn-primary w-full text-center"
+              >
+                Book now
+              </Link>
+            </li>
+          </ul>
+        </div>
       )}
-    </nav>
+    </header>
   );
 }

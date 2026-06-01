@@ -2,45 +2,48 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function AboutUs() {
   return (
     <section
       id="about"
-      className="py-16 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12"
+      className="py-20 sm:py-28 px-4 sm:px-6 md:px-12 bg-white"
       data-aos="fade-up"
     >
-      {/* Left side image */}
-      <div className="w-full md:w-1/2 rounded-lg overflow-hidden shadow-lg">
-        <Image
-          src="/barbershop.jpg"
-          alt="Our barbershop team"
-          width={600}
-          height={400}
-          className="object-cover w-full h-full"
-          priority
-        />
-      </div>
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+          <Image
+            src="/barbershop.jpg"
+            alt="Inside Josh's Turkish Barbers"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
+          />
+          <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl" />
+        </div>
 
-      {/* Right side content */}
-      <div className="w-full md:w-1/2 text-gray-900">
-        <h2 className="text-4xl font-bold mb-6 text-black">Our Story</h2>
-        <p className="mb-6 text-lg text-black leading-relaxed">
-          At Josh&apos;s Turkish Barbers, we believe a haircut is more than just a service — it’s an experience. 
-          Founded in 2010 by master barber Alex Josh&apos;s, our shop has grown from a small neighborhood 
-          spot into a community favorite known for precision, style, and care.
-        </p>
-        <p className="mb-6 text-lg text-black leading-relaxed">
-          Our Team combines traditional barbering techniques with modern trends, ensuring every client 
-          leaves looking and feeling their best. Whether you want a classic cut, a bold skin fade, or a 
-          relaxing hot towel shave, we treat you like family.
-        </p>
-
-        <Link href="/booking">
-          <button className=" text-white bg-gray-500 cursor-pointer px-6 py-3 rounded-lg hover:bg-gray-800 transition">
-            Book an Appointment
-          </button>
-        </Link>
+        <div>
+          <span className="section-label">Since 2010</span>
+          <h2 className="font-display text-4xl sm:text-5xl font-semibold text-[var(--ink)] mb-6">
+            Our Story
+          </h2>
+          <p className="text-[var(--muted)] leading-relaxed mb-5">
+            At Josh&apos;s Turkish Barbers, a haircut is more than a service —
+            it&apos;s an experience. What started as a neighbourhood spot has
+            become a Belmayne favourite for precision, style, and genuine care.
+          </p>
+          <p className="text-[var(--muted)] leading-relaxed mb-8">
+            Our team blends traditional Turkish barbering with modern trends.
+            Whether you want a classic cut, a bold skin fade, or a relaxing hot
+            towel shave, you&apos;re treated like family.
+          </p>
+          <Link href="/booking" className="btn-primary">
+            Book an appointment
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </div>
     </section>
   );
