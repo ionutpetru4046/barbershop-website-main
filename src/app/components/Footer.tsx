@@ -3,12 +3,12 @@ import Link from "next/link";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 
 const quickLinks = [
-  { label: "Home", href: "#" },
-  { label: "Services", href: "#services" },
-  { label: "Booking", href: "#booking" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/#services" },
+  { label: "Booking", href: "/booking" },
+  { label: "Gallery", href: "/#gallery" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Footer() {
@@ -42,22 +42,24 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-white/70 hover:text-[var(--gold)] transition"
-                  >
-                    {link.label}
-                  </a>
+                  {link.href.startsWith("/") ? (
+                    <Link
+                      href={link.href}
+                      className="text-sm text-white/70 hover:text-[var(--gold)] transition"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-sm text-white/70 hover:text-[var(--gold)] transition"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/booking"
-                  className="text-sm text-white/70 hover:text-[var(--gold)] transition"
-                >
-                  Book online
-                </Link>
-              </li>
+              {/* The 'Book online' button now overlaps with Booking in quickLinks, consider removing or keeping for clarity */}
             </ul>
           </nav>
 
