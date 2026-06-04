@@ -20,7 +20,7 @@ export default function Footer() {
             <Image
               src="/logo.jpeg"
               alt="Josh's Turkish Barbers"
-              width={72}
+              width={172}
               height={72}
               className="rounded-full ring-2 ring-[var(--gold)]/40 object-cover shrink-0"
             />
